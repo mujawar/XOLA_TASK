@@ -1,0 +1,1400 @@
+
+1)creating account
+
+curl -X POST https://dev.xola.com/api/users -d '{"name" : "arif mujawar", "email":"arifmr91@gmail.com", "password" : "password123"}' -H "Content-Type:application/json"
+
+result odf API:
+
+{"username":"arifmr91@gmail.com","email":"arifmr91@gmail.com","enabled":false,"roles":[],"name":"Arif Mujawar","updated":"2016-09-27T05:30:17+00:00","id":"57ea03e9c683b1b83a8b4568"}
+
+
+2)after activation getting thr result:
+arif@medibox:~$ curl -X GET https://dev.xola.com/api/users/me -u "arifmr91@gmail.com:password123"
+
+result of API:
+{"username":"arifmr91@gmail.com","email":"arifmr91@gmail.com","enabled":true,"roles":[],"name":"Arif Mujawar","updated":"2016-09-27T05:39:13+00:00","lastLogin":"2016-09-27T05:39:13+00:00","createdAt":"2016-09-27T05:30:17+00:00","id":"57ea03e9c683b1b83a8b4568"}
+
+3)Geranating API KEY
+
+arif@medibox:~$ curl https://dev.xola.com/api/users/57ea03e9c683b1b83a8b4568/apiKey -u "arifmr91@gmail.com:password123"
+["cF38HPX862Xs-w3V1H5Tgn133RKkIPU4EP-Mc1vKLVI"]
+
+4)Getting user information throught API KEY
+arif@medibox:~$ curl https://dev.xola.com/api/users/me -H 'X-API-KEY: cF38HPX862Xs-w3V1H5Tgn133RKkIPU4EP-Mc1vKLVI'
+
+Result:of API:
+{"username":"arifmr91@gmail.com","email":"arifmr91@gmail.com","enabled":true,"roles":[],"name":"Arif Mujawar","updated":"2016-09-27T05:40:15+00:00","lastLogin":"2016-09-27T05:39:13+00:00","createdAt":"2016-09-27T05:30:17+00:00","id":"57ea03e9c683b1b83a8b4568"}
+
+
+5)Getting the fun Sailing activity within 20km of San Francisco which costs less than $75.
+command:
+
+ curl "https://dev.xola.com/api/experiences?search=surfing&price=75&geo=37.7756,-122.4193&sort=geo" -H 'X-API-KEY: cF38HPX862Xs-w3V1H5Tgn133RKkIPU4EP-Mc1vKLVI'
+
+Result of the API:
+
+{
+	"data": [{
+		"category": "Beer Tour",
+		"name": "Tandem Bike Tour 5 HRS",
+		"excerpt": "Ride around with a buddy!",
+		"desc": "Ride around with a buddy!",
+		"duration": 300,
+		"seller": {
+			"id": "570edd94c683b1bc2f8b4567"
+		},
+		"price": 75,
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.42958068848,
+			"lat": 37.778313147997
+		},
+		"updated": "2016-04-14T16:51:47+00:00",
+		"complete": false,
+		"priceType": "outing",
+		"guestType": "normal",
+		"group": {
+			"max": 1,
+			"outingMin": 1,
+			"outingMinCutoff": 0
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "570ee4b0c683b190338b4567"
+		}],
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.4666595459,
+			"lat": 37.764201194538
+		},
+		"cancellationPolicy": "NO REFUNDS",
+		"paymentMethod": "cc",
+		"private": false,
+		"schedules": [{
+			"name": "Weekend",
+			"repeat": "weekly",
+			"days": [0, 6],
+			"type": "available",
+			"departure": "fixed",
+			"times": [1000, 1600],
+			"priceDelta": 0,
+			"id": "570ee4b0c683b1aa2e8b4567"
+		}, {
+			"name": "Weekday",
+			"repeat": "weekly",
+			"days": [4, 5],
+			"type": "available",
+			"departure": "fixed",
+			"times": [1000, 1600],
+			"priceDelta": 0,
+			"id": "570ee4b0c683b14e2f8b4568"
+		}],
+		"pickupAddress": "a",
+		"addOns": [{
+			"name": "T-Shirt",
+			"desc": "A rad BB Tshirt",
+			"price": 30,
+			"visibility": "public",
+			"id": "570fc0bbc683b1fa3d8b4567"
+		}, {
+			"name": "Redbull",
+			"desc": "It gives you wings...",
+			"price": 5,
+			"visibility": "public",
+			"id": "570fc0c2c683b1e1398b4567"
+		}, {
+			"name": "Coozie",
+			"desc": "A BB Coozie",
+			"price": 10,
+			"visibility": "public",
+			"id": "570fc0c7c683b1bd288b4568"
+		}, {
+			"name": "Coffee",
+			"desc": "Cup A JOE",
+			"price": 3.5,
+			"visibility": "public",
+			"id": "570fc0d1c683b1ff3d8b4568"
+		}, {
+			"name": "Ride with a Guide",
+			"desc": "Have a guide take you around....",
+			"price": 25,
+			"visibility": "public",
+			"id": "570fcaa3c683b1ff3d8b4569"
+		}],
+		"resources": [{
+			"resource": {
+				"id": "570fc536c683b1373b8b4568"
+			},
+			"id": "570fc536c683b1373b8b4568"
+		}],
+		"id": "570ee4b0c683b190338b4568"
+	}, {
+		"category": "Food & Wine",
+		"demographics": [{
+			"code": "guests",
+			"name": "Guests",
+			"id": "54ae454ce5bdf063beb5da71"
+		}],
+		"desc": "Discover obscure ingredients and indulge in decadence as you immerse yourself in culinary and viticultural knowledge. Exploring the valley\u2019s gardens, markets, and of course its vineyards, the focus is on the how and why. Rather than merely eat and drink, this is a day to truly taste, explore and understand.\n\n",
+		"excerpt": "Napa Valley has been called \u201cthe only place in America where people come just to eat and drink.\u201d Translation: foodie heaven.",
+		"medias": [{
+			"seq": 4,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e59b6986ae56963000045\/medias\/51cca4093e269e8b2300004e?size=medium",
+			"type": "photo",
+			"id": "51cca4093e269e8b2300004e"
+		}, {
+			"seq": 5,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e59b6986ae56963000045\/medias\/51cca41e3e269ef420000031?size=medium",
+			"type": "photo",
+			"id": "51cca41e3e269ef420000031"
+		}, {
+			"seq": 3,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e59b6986ae56963000045\/medias\/51cca5133e269e3e26000032?size=medium",
+			"type": "photo",
+			"id": "51cca5133e269e3e26000032"
+		}, {
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e59b6986ae56963000045\/medias\/51cca5143e269e992100001e?size=medium",
+			"type": "photo",
+			"seq": 1,
+			"id": "51cca5143e269e992100001e"
+		}, {
+			"seq": 2,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e59b6986ae56963000045\/medias\/51cca5173e269e8b23000051?size=medium",
+			"type": "photo",
+			"id": "51cca5173e269e8b23000051"
+		}, {
+			"seq": 0,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e59b6986ae56963000045\/medias\/51cca5183e269e03220000a2?size=medium",
+			"type": "photo",
+			"id": "51cca5183e269e03220000a2"
+		}],
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/519e59b6986ae56963000045\/51cca5143e269e992100001e.jpg",
+			"type": "photo",
+			"id": "51cca5143e269e992100001e"
+		},
+		"schedules": [{
+			"departure": "fixed",
+			"times": [830],
+			"repeat": "weekly",
+			"days": [0, 4, 5, 6],
+			"priceDelta": 0,
+			"id": "51cca07c3e269e6d2200003f"
+		}, {
+			"repeat": "custom",
+			"dates": ["2014-11-19"],
+			"departure": "fixed",
+			"times": [830],
+			"priceDelta": -10,
+			"id": "546a8e0ec683b1857a8b4569"
+		}],
+		"currency": "USD",
+		"duration": 360,
+		"guestType": "normal",
+		"name": "Happy Morning, 6 Hour Complete Wine Experience",
+		"notIncluded": ["Your Good Mood!"],
+		"other": "",
+		"updated": "2014-11-18T00:08:46+00:00",
+		"geo": {
+			"lng": -122.42546081543,
+			"lat": 37.770171965079
+		},
+		"group": {
+			"min": 8,
+			"max": 14
+		},
+		"included": ["Round-trip from San Francisco", "An awesome Sommelier guide", "Two wineries, tour & tasting", "Necessities for the day"],
+		"priceType": "person",
+		"requireAdult": false,
+		"visible": true,
+		"complete": true,
+		"price": 225,
+		"seller": {
+			"id": "519e502b986ae5d969000032"
+		},
+		"id": "519e59b6986ae56963000045"
+	}, {
+		"category": "Tour",
+		"name": "PRIVATE BREWERY TOURS",
+		"excerpt": "No matter the occasion, a private tour is a great way to discover the Tri-Cities local beer exclusively with your closest friends and family. We can offer private tours almost any date and time and can even offer flexible routes . Truthfully, we are only limited by your imagination!",
+		"desc": "none",
+		"duration": 240,
+		"seller": {
+			"id": "57b5df95c683b1443e8b456e"
+		},
+		"price": 400,
+		"currency": "USD",
+		"included": ["\u2022Professional tour guide", "\u2022Professional driver", "\u2022Complimentary water and snacks", "\u2022Flexible pick-up\/drop-off points", "\u2022Flexible brewery routes depending on availability"],
+		"notIncluded": ["Valid ID"],
+		"geo": {
+			"lng": -122.42496645078,
+			"lat": 37.77688037342
+		},
+		"updated": "2016-08-23T06:33:31+00:00",
+		"complete": true,
+		"priceType": "outing",
+		"guestType": "normal",
+		"group": {
+			"max": 14,
+			"outingMin": 1,
+			"outingMinCutoff": 0
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "57b70e0bc683b1de5a8b4569"
+		}],
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.41973421536,
+			"lat": 37.754440638242
+		},
+		"pickupAddress": "\u2022Flexible pick-up\/drop-off points",
+		"paymentMethod": "cc",
+		"private": false,
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/57b70e0bc683b1de5a8b456a\/57b70e11c683b1a0588b4573.jpg",
+			"type": "photo",
+			"id": "57b70e11c683b1a0588b4573"
+		},
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/57b70e0bc683b1de5a8b456a\/medias\/57b70e11c683b1a0588b4573?size=medium",
+			"type": "photo",
+			"seq": 0,
+			"id": "57b70e11c683b1a0588b4573"
+		}],
+		"resources": [{
+			"resource": {
+				"id": "57b73786c683b13a1e8b456d"
+			},
+			"id": "57b73786c683b13a1e8b456d"
+		}],
+		"schedules": [{
+			"repeat": "weekly",
+			"days": [0, 1, 2, 3, 4, 5, 6],
+			"type": "available",
+			"departure": "varies",
+			"priceDelta": 0,
+			"id": "57b743d3c683b1324b8b4567"
+		}],
+		"addOns": [{
+			"name": "Additional Hours",
+			"price": 100,
+			"visibility": "public",
+			"id": "57b74468c683b1dc7a8b456e"
+		}],
+		"other": "Does the tour still happen if it's raining or snowing?\nYes, the tour will still run in the rain or snow but in the chance we find the weather to be too dangerous for a tour you will be notified and your money refunded.\n\nDo I need my ID?\nYes, any person may be subject to be asked to show their ID by either us or any one of the breweries. Your ID must be a valid state driver's license, passport, or any other government issued ID.\n\nIs there a dress code?\nClose-toed shoes are required for certain parts of the tour and shirts are required for the entire tour.\n\nIs there a designated driver rate?\nYes, and it's $30 per person. It's the same exact tour minus the beer samples. After you select your tour time and date you will see an option for a designated driver rate.\n\nHow long does a tour last?\nA typical tour will last between 3 and 3 1\/2 hours long.\n\nIs there an age limit to go on a tour?\nOn our regular tours, yes. You must be at least 21 with a valid ID. If you book the bus for a private event, all ages are welcomed but consumption of alcohol is only permitted for individuals 21 or older.\n\nCan I purchase merchandise at the breweries?\nAbsolutely and it's highly encouraged!\n\nHow much beer is served on the tour?\nApproximately four 4oz. samples of beer per brewery.\n\nCan I purchase additional alcohol outside of the samples provided?\nYou are welcome to purchase an additional pint or sample outside of what is provided as long as you finish it at the establishment in which it was purchased, within the time frame of the tour schedule.\n\nIs the tour wheelchair accessible?\nUnfortunately, not at this time. We are happy and willing to assist in any way to make this tour work for any person but at this time our vehicle is not outfitted for wheelchairs.\n\nAre there gift certificates available?\nYes there are! CLICK HERE to purchase one today.\n\nWhat is the refund\/cancellation policy?\nWe do not offer refunds for cancellation. However, full refunds will be available if we cancel due to not meeting our minimum participants or extremely dangerous weather.\n\nWhere can I park?\nEach pick up\/drop off point has different recommendations for parking. You can find those details in the product descriptions in our online store.\n\nDo you offer special pick up\/drop off points?\nFor our regular tours we do not but if you book us for a private event we can absolutely arrange a special pick up\/drop off point. A fee may incur depending on distance.\n\nCan I book the bus for a private event?\nYes, for pricing and availability please email us at info@tricitiesbrewtours.com\n\nCan I bring a growler and get it filled?\nAbsolutely! However, due to insurance purposes you can not open or drink from your growler during any point of the tour.\n\nCan I take photos?\nYes and its encouraged, but please be considerate to the other people participating on the tour if you do. If you would like to avoid being photographed please let us know.\n\nWill there be bathrooms available during the tour?\nYes, every brewery that we will visit has a free and clean public restroom.\n\nWill there be food available during the tour?\nWe will provide you with complimentary snacks and bottled water during transit. It is possible we might encounter some food trucks along the way but is not guaranteed.\n\nCan I drink beer on the bus?\nDue to state laws, insurance, and liability . . . . no. Private events however, can be different.\n\nIs gratuity included?\nGratuity for our guides are not included but are very much appreciated.",
+		"cancellationPolicy": "We do not offer refunds for cancellation. However, full refunds will be available if we cancel due to not meeting our minimum participants or extremely dangerous weather.",
+		"id": "57b70e0bc683b1de5a8b456a"
+	}, {
+		"included": ["Round-trip from San Francisco", "An awesome Sommelier", "Two wineries, tour & tasting", "Necessities for the day"],
+		"schedules": [{
+			"departure": "fixed",
+			"times": [1430],
+			"repeat": "weekly",
+			"days": [0, 4, 5, 6],
+			"priceDelta": 0,
+			"id": "51cca47c3e269e03220000a1"
+		}],
+		"seller": {
+			"id": "519e502b986ae5d969000032"
+		},
+		"excerpt": "Napa Valley has been called \u201cthe only place in America where people come just to eat and drink.\u201d Translation: foodie heaven.",
+		"group": {
+			"min": 8,
+			"max": 14
+		},
+		"guestType": "normal",
+		"notIncluded": ["Your Good Mood!"],
+		"other": "",
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/519e576b986ae50d68000034\/51cca3c33e269ec720000030.jpg",
+			"type": "photo",
+			"id": "51cca3c33e269ec720000030"
+		},
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "54ae454be5bdf063beb5d089"
+		}],
+		"desc": "Discover obscure ingredients and indulge in decadence as you immerse yourself in culinary and viticultural knowledge. Exploring the valley\u2019s gardens, markets, and of course its vineyards, the focus is on the how and why. Rather than merely eat and drink, this is a day to truly taste, explore and understand.",
+		"medias": [{
+			"seq": 12,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/519e5771986ae56f6400002f?size=medium",
+			"type": "photo",
+			"id": "519e5771986ae56f6400002f"
+		}, {
+			"seq": 3,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca3533e269ece21000038?size=medium",
+			"type": "photo",
+			"id": "51cca3533e269ece21000038"
+		}, {
+			"seq": 7,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca3893e269e3e2600002d?size=medium",
+			"type": "photo",
+			"id": "51cca3893e269e3e2600002d"
+		}, {
+			"seq": 4,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca3c33e269ec720000030?size=medium",
+			"type": "photo",
+			"id": "51cca3c33e269ec720000030"
+		}, {
+			"seq": 10,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca4af3e269e4c2700002e?size=medium",
+			"type": "photo",
+			"id": "51cca4af3e269e4c2700002e"
+		}, {
+			"seq": 2,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca4d03e269ecf2100005b?size=medium",
+			"type": "photo",
+			"id": "51cca4d03e269ecf2100005b"
+		}, {
+			"seq": 8,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca66f3e269e052a0000c2?size=medium",
+			"type": "photo",
+			"id": "51cca66f3e269e052a0000c2"
+		}, {
+			"seq": 6,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca6713e269e042200004c?size=medium",
+			"type": "photo",
+			"id": "51cca6713e269e042200004c"
+		}, {
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca6723e269e4c27000031?size=medium",
+			"type": "photo",
+			"seq": 5,
+			"id": "51cca6723e269e4c27000031"
+		}, {
+			"type": "photo",
+			"seq": 1,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca69b3e269ece2100003e?size=medium",
+			"id": "51cca69b3e269ece2100003e"
+		}, {
+			"seq": 9,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca69b3e269e0722000031?size=medium",
+			"type": "photo",
+			"id": "51cca69b3e269e0722000031"
+		}, {
+			"type": "photo",
+			"seq": 0,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca69c3e269e9921000020?size=medium",
+			"id": "51cca69c3e269e9921000020"
+		}, {
+			"seq": 11,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/519e576b986ae50d68000034\/medias\/51cca6c83e269e9921000022?size=medium",
+			"type": "photo",
+			"id": "51cca6c83e269e9921000022"
+		}],
+		"name": "Sparkling Afternoon : 6 Hours Complete Experience",
+		"updated": "2013-06-27T20:56:13+00:00",
+		"currency": "USD",
+		"duration": 360,
+		"priceType": "person",
+		"visible": true,
+		"category": "Food & Wine",
+		"complete": true,
+		"geo": {
+			"lng": -122.42408752441,
+			"lat": 37.769629187677
+		},
+		"price": 225,
+		"id": "519e576b986ae50d68000034"
+	}, {
+		"currency": "USD",
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/51cb4831986ae58906000012\/51cb483b986ae5b66a00001b.png",
+			"type": "photo",
+			"id": "51cb483b986ae5b66a00001b"
+		},
+		"addOns": [{
+			"desc": "Keep Calm and Fly High T-Shirt",
+			"name": "Keep Calm and Fly High T-Shirt",
+			"price": 25,
+			"id": "51ce6f803e269e131c000060"
+		}],
+		"geo": {
+			"lng": -122.42168426514,
+			"lat": 37.789827998605
+		},
+		"group": {
+			"max": 3
+		},
+		"included": [],
+		"price": 299,
+		"updated": "2013-08-20T21:21:31+00:00",
+		"visible": true,
+		"category": "Aerial Tours",
+		"desc": "This Flight Training Adventure to see San Francisco Bay includes the following instruction:\n   * Ground & Pre Flight Instruction \n   * Flight Training \n   * Post Flight Instruction and Debrief.\n\nSafety is our number one priority at Visionary Air.  Note that the FTA is not a charter, the flight instructor has the final authority to embark on the training adventure. If weather or other contributing factors make the training adventure unsafe in the flight instructor's judgment, then the FTA will be rescheduled to a day different than the one reserved here.",
+		"pickupAddress": "San Fran",
+		"seller": {
+			"id": "51cb4725986ae5a001000008"
+		},
+		"duration": 1,
+		"other": "",
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "54ae454ce5bdf063beb5dcd8"
+		}],
+		"complete": true,
+		"excerpt": "This Flight Training Adventure to see San Francisco Bay includes the following instruction:\n   * Ground & Pre Flight Instruction \n   * Flight Training \n   * Post Flight Instruction and Debrief\n\nSafety is our number one priority at Visionary Air.  Note that the FTA is not a charter.",
+		"name": "Bay Area FTA",
+		"priceType": "outing",
+		"notIncluded": [],
+		"pickupGeo": {
+			"lng": -122.42408752441,
+			"lat": 37.789112397069
+		},
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/51cb4831986ae58906000012\/medias\/51cb483b986ae5b66a00001b?size=medium",
+			"type": "photo",
+			"id": "51cb483b986ae5b66a00001b"
+		}],
+		"guestType": "normal",
+		"id": "51cb4831986ae58906000012"
+	}, {
+		"group": {
+			"min": 2,
+			"max": 5
+		},
+		"price": 159,
+		"seller": {
+			"id": "51c333bb3e269ee720000002"
+		},
+		"guestType": "normal",
+		"name": "San Francisco Air Tour",
+		"other": "",
+		"geo": {
+			"lng": -122.42099761963,
+			"lat": 37.784944157351
+		},
+		"included": [],
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/51c3358f3e269ed41f000009\/51c340d7986ae58f5400001d.jpg",
+			"type": "photo",
+			"id": "51c340d7986ae58f5400001d"
+		},
+		"complete": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "54ae454ce5bdf063beb5dc9c"
+		}],
+		"desc": "You've never fully experienced the beauty of San Francisco until you see it from the air. Grab your seat and see for yourself!",
+		"duration": 30,
+		"excerpt": "-Aerial Photography\n-Sunset Flights\n-Group Events",
+		"priceType": "person",
+		"visible": true,
+		"notIncluded": [],
+		"schedules": [{
+			"priceDelta": 0,
+			"departure": "fixed",
+			"times": [1000, 1200, 1400, 1600],
+			"repeat": "weekly",
+			"days": [0, 5, 6],
+			"id": "51c33c26986ae58a54000011"
+		}],
+		"addOns": [{
+			"name": "Romantic Sunset Tour",
+			"desc": "Have a private romantic sunset tour with your sweetie. There's no better way to show them our amazing sunsets than through the air!",
+			"price": 230,
+			"id": "51c34a89986ae5905400001f"
+		}],
+		"category": "Aerial Tours",
+		"currency": "USD",
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/51c3358f3e269ed41f000009\/medias\/51c3414a3e269e681f000004?size=medium",
+			"type": "photo",
+			"id": "51c3414a3e269e681f000004"
+		}, {
+			"seq": 0,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/51c3358f3e269ed41f000009\/medias\/51c340d7986ae58f5400001d?size=medium",
+			"type": "photo",
+			"id": "51c340d7986ae58f5400001d"
+		}, {
+			"src": "https:\/\/www.youtube.com\/watch?v=TagJxlxAnhU",
+			"type": "youtube",
+			"id": "51c34a2e986ae58f54000020"
+		}],
+		"updated": "2013-06-21T21:30:44+00:00",
+		"id": "51c3358f3e269ed41f000009"
+	}, {
+		"included": [],
+		"name": "Mission District Food Tour",
+		"notIncluded": [],
+		"pickupAddress": "san francisco",
+		"pickupGeo": {
+			"lng": -122.41069793701,
+			"lat": 37.788946217812
+		},
+		"price": 68,
+		"category": "Food & Wine",
+		"geo": {
+			"lng": -122.42099761963,
+			"lat": 37.788742728442
+		},
+		"medias": [{
+			"seq": 0,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/52042e59986ae5470a000043\/medias\/52042e5d986ae5150900002e?size=medium",
+			"type": "photo",
+			"id": "52042e5d986ae5150900002e"
+		}],
+		"priceType": "person",
+		"visible": true,
+		"currency": "USD",
+		"duration": 180,
+		"updated": "2013-08-10T00:08:08+00:00",
+		"desc": " We visit a New York Times acclaimed Cheese Bar and the tour continues as guests sample the best of the San Francisco food scene. Stroll through the historic Latin neighborhood learning about its history and incredibly colorful murals, while going behind-the-scenes to meet chefs, restaurant owners and industry experts. Our progressive meal in San Francisco\u2019s trendy Mission District concludes with mouthwatering desserts near Dolores Park. Be sure to bring your appetite!\n\n3 hour San Francisco Mission District Food Tour\nMeet chefs, restaurant owners and industry experts!\n5 restaurants, with generous tastings at each\nFlat route, approximately a mile and a half\nBegins in front of the Women\u2019s Building (15 minutes from downtown San Francisco)\nIntimate tour groups limited to 12 people\n$68 per person \n(gratuities not included \u2013 please consider tipping your guide)\nAlcohol pairing add on: $16 per person\nAvailable Saturdays 11am-2pm and Tuesdays 6pm-9pm\nAdvance tickets are required\nTASTINGS*\n\nArtisan American Cheese Flight at a New York Times acclaimed chic cheese cafe\n\nArtisan cured Ham and Oyster at San Francisco\u2019s first ham and oyster bar\n\nGo behind the scenes into a commercial kitchen to eat freshly filled Argentine-style Empanadas featured on 7\u00d77 Magazine\u2019s list of Top 100 Foods to Eat Before You Die.\n\nFresh organic fruit tasting at iconic neighborhood artisan grocery\n\nSalted Caramel Ice Cream considered one of the top five desserts in America at the United States\u2019 best loved Creamery. Skip the inevitable line with Avital Tours!\n\nALCOHOL ADD ON INCLUDES:\n\nSeasonal Michael Lazar-created cocktail featured on 7\u00d77 Magazine\u2019s list of Top 50 cocktails and featured in the New York Times as one of San Francisco\u2019s best craft cocktail programs\n\nUnique dark Belgian Style beer paired with cheeses for incredible pairing unlike any other you\u2019ve ever tasted\n\n* All stops and tastings are subject to availability. We are able to accommodate most dietary restrictions with advance notice. Vegetarian option available. This tour is not recommended for vegans or people with gluten allergies.\n\n- See more at: http:\/\/avitaltours.com\/tours\/mission_district_food_tour\/#sthash.ltOTxy6u.dpuf",
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "54ae454ce5bdf063beb5d18c"
+		}],
+		"excerpt": "Our Mission District Food Tour showcases the innovation and trendy restaurants of the San Francisco culinary world.",
+		"guestType": "normal",
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/52042e59986ae5470a000043\/52042e5d986ae5150900002e.jpg",
+			"type": "photo",
+			"id": "52042e5d986ae5150900002e"
+		},
+		"seller": {
+			"id": "52042d63986ae5500c00001f"
+		},
+		"complete": true,
+		"id": "52042e59986ae5470a000043"
+	}, {
+		"category": "Food & Wine",
+		"included": [],
+		"notIncluded": [],
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/52042eb3986ae5880b000023\/52042ec2986ae5070a00002a.jpg",
+			"type": "photo",
+			"id": "52042ec2986ae5070a00002a"
+		},
+		"pickupGeo": {
+			"lat": 37.787318287164,
+			"lng": -122.43198394775
+		},
+		"duration": 3,
+		"name": "North Beach  Food & Wine Tour",
+		"seller": {
+			"id": "52042d63986ae5500c00001f"
+		},
+		"complete": true,
+		"currency": "USD",
+		"desc": "Go behind-the-scenes in Little Italy on our North Beach Food and Wine tour to join us as we explore its great restaurant scene and visit the Hidden Prohibition-Era Tunnels where booze was smuggled in. Then, get an exclusive peek at the Oldest Pizza Oven on the West Coast built in 1935, which was copied by Wolfgang Puck at Spago and Alice Waters at Chez Panisse. Let\u2019s eat and drink through this notorious neighborhood!\n\n3-hour San Francisco North Beach Food and Wine walking tour\nMeet chefs, restaurant owners and industry experts and chat with them!\n5 restaurants, with tastings at each\nFlat route, approximately 3\/4 of a mile\nMeeting location is a 10 minute walk from Downtown San Francisco\nIntimate tour groups limited to 12 people\n$86 per person\n(gratuities not included \u2013 please consider tipping your guide)\nTour guests must be 21+\nAvailable Thursdays 4pm-7pm and Saturdays 4pm-7pm\nAdvance Tickets are required\nTASTINGS*\n\nFill your own delicate cannoli with an Italian expert cannoli maker at a historic Italian bookshop turned cafe\n\nWine and Cheese pairing at trendy wine bar pouring wine directly from barrels. Drink as if you\u2019re in Napa!\n\nAuthentic Italian Wood-fired Pizza from the oldest pizza oven on the West Coast \u2013 Voted No. 3 Best Pizza in the US according to People Magazine\u2019s Pizza Search. Pizza paired with a glass of private-label Syrah\n\nContemporary Kale Chips and Bolivian Beef in former Amelio\u2019s, a historic North Beach restaurant and speakeasy which hosted Joe DiMaggio and Marilyn Monroe\u2019s wedding dinner\n\nSweet and Savory local artisan agave caramel and caramel popcorn at neighborhood gourmet food boutique\n\n* Stops and tastings are subject to change based on availability. We can accommodate most dietary restrictions with advance notice. Vegetarian option available.\n\n- See more at: http:\/\/avitaltours.com\/tours\/north-beach-food-tour\/#sthash.yMPq73Qw.dpuf",
+		"price": 86,
+		"updated": "2013-08-08T23:50:27+00:00",
+		"visible": true,
+		"priceType": "person",
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "54ae454ce5bdf063beb5d18d"
+		}],
+		"excerpt": "San Francisco\u2019s North Beach is the home of the former Barbary Coast, known during the Gold Rush for its saloons, brothels and shanghaiing dens. ",
+		"geo": {
+			"lng": -122.41962432861,
+			"lat": 37.785486822318
+		},
+		"guestType": "normal",
+		"medias": [{
+			"type": "photo",
+			"seq": 0,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/52042eb3986ae5880b000023\/medias\/52042ec2986ae5070a00002a?size=medium",
+			"id": "52042ec2986ae5070a00002a"
+		}],
+		"pickupAddress": "san fran",
+		"id": "52042eb3986ae5880b000023"
+	}, {
+		"category": "Beer Tour",
+		"name": "London Pub Crawl",
+		"excerpt": "The London Pub Crawl includes Free entry to 5 Bars\/Clubs, 5 Free shots at well as Drink Specials.",
+		"desc": "a",
+		"duration": 60,
+		"seller": {
+			"id": "567497a7c683b1f5688b4567"
+		},
+		"price": 20,
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.41928100586,
+			"lat": 37.759858513185
+		},
+		"updated": "2016-01-14T19:44:36+00:00",
+		"other": "By participating in any event (including pub crawls) organised and hosted by London Party Pub Crawl, you the participant, agree to the following terms and conditions without restriction:\n\n1. All participants are responsible for their own safety and well-being during the event. London Party Pub Crawl will do its best to ensure that participants safely attend a variety of localities and venues within London. However, London Party Pub Crawl events cannot mitigate every eventuality and as such, London Party Pub Crawl events involve an element of possible risk. All participants acknowledge these risks and attend events of their own accord and solely at their own risk.\n\n2. London Party Pub Crawl events include opportunities for participants to consume alcohol at their own discretion. London Party Pub Crawl urges all participants to drink responsibly and cannot accept any responsibility or liability if participants drink excessively, resulting in damages, ill health, injury or death.\n\n3. All participants should be aware of their own physical or mental limitations before attending an event. People with medical conditions or who are pregnant are strongly advised not to participate in London Party Pub Crawl events and must inform London Party Pub Crawl of the full nature of their condition before participating.\n\n4. All London Party Pub Crawl participants must be 18 years or older. Only official identification will be accepted as proof of age and includes: Passports, driver licences, proof of age (18 plus) cards, etc. Unacceptable identification includes photocopies, student cards and other non-government issued identification.\n\n5. All tickets must be purchased before you may participate in London Party Pub Crawl events. Tickets purchased from distributors (hostels, accommodation providers, online sales, etc) will be redeemed for a wristband at the starting venue.\n\n6. You may not change or cancel tickets after purchase with any distributor. Direct sales made with London Party Pub Crawl may be refunded or another ticket provided at London Party Pub Crawl\u2019s discretion.\n\n7. London Party Pub Crawl reserves the right to cancel a tour at our discretion and for any reason. In the event of a cancellation, London Party Pub Crawl will try to contact distributors and clients as quickly as possible and will refund or replace tickets where appropriate.\n\n8. London Party Pub Crawl reserves the right to change or modify tours without notice, including changing or altering venues and routes. In the event of a change, London Party Pub Crawl will endeavour to substitute comparable venues, but accepts no liability for changes.\n\n9. London Party Pub Crawl accepts no liability for participant\u2019s behaviour and reserves the right to refuse entry or remove from events anyone who is drunk, disorderly, aggressive, abusive or anti-social. In the event of refusal or removal, London Party Pub Crawl will not refund ticket prices or cover any additional costs incurred by participants as a result.\n\n10. The participant agrees to indemnify London Party Pub Crawl (it\u2019s employees, directors, suppliers, agents, distributors, representatives, etc) against any third party claims as a result of the participant\u2019s behaviour and actions. Any damages or loss caused by a participant is solely the participant\u2019s responsibility.\n\n11. All venues (including bars and clubs), attended by London Party Pub Crawl reserve the right to refuse entry or remove participants from venues for any reason including drunk, disorderly, aggressive, abusive or anti-social behaviour. London Party Pub Crawl accepts no liability in the event of refusal or removal and will not refund ticket prices in such an event.\n\n12. London Party Pub Crawl does not accept bookings for single sex groups of 10 or more, regardless of the occasion. Unfortunately the venues we work with adhere to this policy and therefore any such group would not be admitted entry.\n\nlive chat software\n",
+		"complete": true,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"outingMin": 1,
+			"outingMinCutoff": 3600
+		},
+		"visible": true,
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.43026733398,
+			"lat": 37.757687076897
+		},
+		"pickupAddress": "1",
+		"cancellationPolicy": "a",
+		"paymentMethod": "cc",
+		"private": false,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "56749945c683b1614f8b4567"
+		}],
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/56749945c683b1614f8b4568\/56749a4dc683b19a5e8b4567.jpg",
+			"type": "photo",
+			"id": "56749a4dc683b19a5e8b4567"
+		},
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/56749945c683b1614f8b4568\/medias\/56749a4dc683b19a5e8b4567?size=medium",
+			"type": "photo",
+			"seq": 0,
+			"caption": "",
+			"id": "56749a4dc683b19a5e8b4567"
+		}],
+		"schedules": [{
+			"repeat": "weekly",
+			"days": [0, 1, 2, 3, 4, 5, 6],
+			"type": "available",
+			"departure": "fixed",
+			"times": [2000],
+			"priceDelta": 0,
+			"id": "5697faa4c683b1537a8b4567"
+		}],
+		"id": "56749945c683b1614f8b4568"
+	}, {
+		"category": "Aerial Tours",
+		"name": "Full Day Kayak Rental",
+		"excerpt": "haha",
+		"desc": "haha",
+		"duration": 480,
+		"seller": {
+			"id": "5787fe2ac683b1d4628b4577"
+		},
+		"price": 40,
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.41928100586,
+			"lat": 37.773971295333
+		},
+		"updated": "2016-07-19T19:59:04+00:00",
+		"complete": false,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"max": 8,
+			"outingMin": 1,
+			"outingMinCutoff": 3600
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "578e719cc683b1281c8b4570"
+		}],
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.43438720703,
+			"lat": 37.754429802956
+		},
+		"pickupAddress": "haha",
+		"paymentMethod": "cc",
+		"private": false,
+		"schedules": [{
+			"repeat": "weekly",
+			"days": [0, 1, 2, 3, 4, 5, 6],
+			"type": "available",
+			"departure": "fixed",
+			"times": [1000, 1100, 1200, 1300, 1310],
+			"priceDelta": 0,
+			"id": "578e719cc683b1bb1d8b456d"
+		}],
+		"resources": [{
+			"resource": {
+				"id": "578e7372c683b1541d8b4568"
+			},
+			"id": "578e7372c683b1541d8b4568"
+		}],
+		"id": "578e719cc683b1281c8b4571"
+	}, {
+		"category": "Aerial Tours",
+		"name": "Rebook: Full Day Kayak",
+		"excerpt": "haha",
+		"desc": "haha",
+		"duration": 480,
+		"seller": {
+			"id": "5787fe2ac683b1d4628b4577"
+		},
+		"price": 40,
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.41928100586,
+			"lat": 37.765286825038
+		},
+		"updated": "2016-07-19T18:42:16+00:00",
+		"complete": false,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"max": 8,
+			"outingMin": 1,
+			"outingMinCutoff": 3600
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "578e7488c683b12c1c8b4573"
+		}],
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.41790771484,
+			"lat": 37.751172385606
+		},
+		"pickupAddress": "haha",
+		"paymentMethod": "cc",
+		"private": false,
+		"schedules": [{
+			"repeat": "weekly",
+			"days": [0, 1, 2, 3, 4, 5, 6],
+			"type": "available",
+			"departure": "fixed",
+			"times": [1000, 1100, 1200],
+			"priceDelta": 0,
+			"id": "578e7488c683b1931d8b456b"
+		}],
+		"id": "578e7488c683b12c1c8b4574"
+	}, {
+		"category": "Hang Gliding ",
+		"excerpt": "testing",
+		"desc": "testing",
+		"duration": 30,
+		"seller": {
+			"id": "52092181986ae5364b00001f"
+		},
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.41807937622,
+			"lat": 37.760401362297
+		},
+		"updated": "2015-12-16T21:39:31+00:00",
+		"complete": true,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"outingMin": 1,
+			"outingMinCutoff": 3600
+		},
+		"visible": true,
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -117.0703125,
+			"lat": 36.59788913307
+		},
+		"paymentMethod": "cc",
+		"private": false,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "5671c1dfc683b1ef118b4583"
+		}],
+		"name": "Testing",
+		"price": 100,
+		"pickupAddress": "sunnyavale 3012",
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/5671c1dfc683b1ef118b4584\/5671da12c683b1b1158b4580.png",
+			"type": "photo",
+			"id": "5671da12c683b1b1158b4580"
+		},
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/5671c1dfc683b1ef118b4584\/medias\/5671da12c683b1b1158b4580?size=medium",
+			"type": "photo",
+			"seq": 0,
+			"id": "5671da12c683b1b1158b4580"
+		}],
+		"id": "5671c1dfc683b1ef118b4584"
+	}, {
+		"category": "Aerial Tours",
+		"currency": "USD",
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "54ae454ce5bdf063beb5d57c"
+		}],
+		"desc": "Description goes here.",
+		"notIncluded": [],
+		"priceType": "person",
+		"seller": {
+			"id": "51c333bb3e269ee720000002"
+		},
+		"updated": "2013-07-01T21:05:25+00:00",
+		"guestType": "normal",
+		"included": [],
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/51d1eecf986ae5df7500003e\/medias\/51d1ef14986ae54177000023?size=medium",
+			"type": "photo",
+			"id": "51d1ef14986ae54177000023"
+		}],
+		"other": "Other considerations goes here.",
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/51d1eecf986ae5df7500003e\/51d1ef14986ae54177000023.jpg",
+			"type": "photo",
+			"id": "51d1ef14986ae54177000023"
+		},
+		"price": 159,
+		"duration": 60,
+		"excerpt": "Excerpt goes here.",
+		"geo": {
+			"lng": -122.41756439209,
+			"lat": 37.773004519992
+		},
+		"name": "Fly Yourself",
+		"visible": true,
+		"complete": true,
+		"id": "51d1eecf986ae5df7500003e"
+	}, {
+		"category": "Skydiving",
+		"complete": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "54ae454be5bdf063beb5ceb7"
+		}],
+		"excerpt": "Enjoy the sights, and revel in the honor of tandem skydiving in San Francisco as you drift to the landing zone. Tandem skydiving in San Francisco is the most recommended introduction to the world of skydiving in San Francisco.",
+		"included": [],
+		"currency": "USD",
+		"desc": "Tandem skydiving in San Francisco is the most recommended introduction to the world of skydiving in San Francisco. Your first experience with tandem skydiving in San Francisco is designed to adjust your mind to the mental rush invloved. San Francisco Skydiving wants to make sure that you can walk before you can fly. After an efficiently brief training class, you will have all the basic information you need for your experience with tandem skydiving in San Francisco. You see, with tandem skydiving in San Francisco, only the minimum effort from yourself is required because a USPA certified San Francisco Skydiving network tandem master is attached to you the entire time. It's easy, simple, and to be repetitive, easy.\n\nEnjoy the sights, and revel in the honor of tandem skydiving in San Francisco as you drift to the landing zone. If you want to get your skydiving certification to jump more often and cheaper, but don't think your ready for the big time solo flight, let the San Francisco Skydiving network take you through the tandem skydiving method of certification!",
+		"geo": {
+			"lng": -122.41619110107,
+			"lat": 37.769846312367
+		},
+		"guestType": "normal",
+		"medias": [{
+			"seq": 1,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/50e1d854986ae5cd03000002\/medias\/50e1d85a986ae5ce03000003?size=medium",
+			"type": "photo",
+			"id": "50e1d85a986ae5ce03000003"
+		}, {
+			"seq": 0,
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/50e1d854986ae5cd03000002\/medias\/50e1d862986ae5d803000003?size=medium",
+			"type": "photo",
+			"id": "50e1d862986ae5d803000003"
+		}],
+		"status": 1,
+		"name": "Tandem Skydiving over San Francisco ",
+		"price": 100,
+		"priceType": "person",
+		"seller": {
+			"id": "50e1d573986ae5da03000001"
+		},
+		"visible": true,
+		"duration": 180,
+		"notIncluded": [],
+		"other": "You must be 18 years of age to skydive in the United States. \n\nDepending on your San Francisco Skydiving network vendor of choice, stills may be available at no extra cost.\n\nFor your first skydiving San Francisco experience, we recommend wearing casual clothes suitable for outdoor activity and appropriate for the season. ",
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/50e1d854986ae5cd03000002\/50e1d862986ae5d803000003.jpg",
+			"type": "photo",
+			"id": "50e1d862986ae5d803000003"
+		},
+		"updated": "2013-11-19T14:17:04+00:00",
+		"id": "50e1d854986ae5cd03000002"
+	}, {
+		"category": "Tour",
+		"name": "Brew Bus Rental",
+		"excerpt": "Whether it's a night out on the town or a special event, our buses are available to book!",
+		"desc": "none",
+		"duration": 480,
+		"seller": {
+			"id": "57b5df95c683b1443e8b456e"
+		},
+		"price": 800,
+		"currency": "USD",
+		"included": ["\u2022Professional driver", "\u2022Complimentary water, snacks, and ice", "\u2022Flexible pick-up\/drop-off points"],
+		"notIncluded": ["Valid ID", "Close-toed shoes"],
+		"geo": {
+			"lng": -122.41430969909,
+			"lat": 37.776457046463
+		},
+		"updated": "2016-09-26T22:19:28+00:00",
+		"complete": false,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"max": 14,
+			"outingMin": 1,
+			"outingMinCutoff": 0
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "57b73a81c683b13e1e8b4572"
+		}, {
+			"name": "Children",
+			"code": "children",
+			"description": "$200",
+			"id": "57e99e3dc683b19f568b457d"
+		}],
+		"requireAdult": false,
+		"pickupAddress": "1",
+		"paymentMethod": "later",
+		"private": false,
+		"travelerPreference": {
+			"questionnaire": {
+				"value": false
+			}
+		},
+		"resources": [],
+		"other": "Brewery route is subject to change based on brewery availability.\n\nDoes the tour still happen if it's raining or snowing?\nYes, the tour will still run in the rain or snow but in the chance we find the weather to be too dangerous for a tour you will be notified and your money refunded.\n\nDo I need my ID?\nYes, any person may be subject to be asked to show their ID by either us or any one of the breweries. Your ID must be a valid state driver's license, passport, or any other government issued ID.\n\nIs there a dress code?\nClose-toed shoes are required for certain parts of the tour and shirts are required for the entire tour.\n\nIs there a designated driver rate?\nYes, and it's $30 per person. It's the same exact tour minus the beer samples. After you select your tour time and date you will see an option for a designated driver rate.\n\nHow long does a tour last?\nA typical tour will last between 3 and 3 1\/2 hours long.\n\nIs there an age limit to go on a tour?\nOn our regular tours, yes. You must be at least 21 with a valid ID. If you book the bus for a private event, all ages are welcomed but consumption of alcohol is only permitted for individuals 21 or older.\n\nCan I purchase merchandise at the breweries?\nAbsolutely and it's highly encouraged!\n\nHow much beer is served on the tour?\nApproximately four 4oz. samples of beer per brewery.\n\nCan I purchase additional alcohol outside of the samples provided?\nYou are welcome to purchase an additional pint or sample outside of what is provided as long as you finish it at the establishment in which it was purchased, within the time frame of the tour schedule.\n\nIs the tour wheelchair accessible?\nUnfortunately, not at this time. We are happy and willing to assist in any way to make this tour work for any person but at this time our vehicle is not outfitted for wheelchairs.\n\nAre there gift certificates available?\nYes there are! CLICK HERE to purchase one today.\n\nWhat is the refund\/cancellation policy?\nWe do not offer refunds for cancellation. However, full refunds will be available if we cancel due to not meeting our minimum participants or extremely dangerous weather.\n\nWhere can I park?\nEach pick up\/drop off point has different recommendations for parking. You can find those details in the product descriptions in our online store.\n\nDo you offer special pick up\/drop off points?\nFor our regular tours we do not but if you book us for a private event we can absolutely arrange a special pick up\/drop off point. A fee may incur depending on distance.\n\nCan I book the bus for a private event?\nYes, for pricing and availability please email us at info@tricitiesbrewtours.com\n\nCan I bring a growler and get it filled?\nAbsolutely! However, due to insurance purposes you can not open or drink from your growler during any point of the tour.\n\nCan I take photos?\nYes and its encouraged, but please be considerate to the other people participating on the tour if you do. If you would like to avoid being photographed please let us know.\n\nWill there be bathrooms available during the tour?\nYes, every brewery that we will visit has a free and clean public restroom.\n\nWill there be food available during the tour?\nWe will provide you with complimentary snacks and bottled water during transit. It is possible we might encounter some food trucks along the way but is not guaranteed.\n\nCan I drink beer on the bus?\nDue to state laws, insurance, and liability . . . . no. Private events however, can be different.\n\nIs gratuity included?\nGratuity for our guides are not included but are very much appreciated.",
+		"cancellationPolicy": "We do not offer refunds for cancellation. However, full refunds will be available if we cancel due to not meeting our minimum participants or extremely dangerous weather.",
+		"id": "57b73a81c683b13e1e8b4573"
+	}, {
+		"category": "Ocean Cruises",
+		"name": "2 for 2",
+		"excerpt": "Join us in one of our Mil-Surp amphibious tour buses for a tour of the Saulsalito-Tiburon coast as well as historic Angel Island!",
+		"desc": "It's on a boat.",
+		"duration": 240,
+		"seller": {
+			"id": "5703e383c683b1db368b4567"
+		},
+		"price": 28.3,
+		"currency": "USD",
+		"included": ["Snacks", "Beverages"],
+		"notIncluded": ["Appropriate Clothing (Layers!)"],
+		"geo": {
+			"lng": -122.40939974785,
+			"lat": 37.777151388189
+		},
+		"updated": "2016-08-02T21:57:50+00:00",
+		"complete": true,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"max": 2,
+			"outingMin": 1,
+			"outingMinCutoff": 0
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "57053f8fc683b102138b4567"
+		}, {
+			"name": "Children",
+			"code": "children",
+			"description": "under 13",
+			"discount": {
+				"amount": 5,
+				"amountType": "absolute"
+			},
+			"id": "57053fb4c683b17c108b456d"
+		}, {
+			"name": "Adults",
+			"code": "adults",
+			"description": "",
+			"discount": {
+				"amount": 23.59,
+				"amountType": "absolute"
+			},
+			"id": "578eb831c683b1852f8b456d"
+		}],
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.47833251953,
+			"lat": 37.859031891553
+		},
+		"pickupAddress": "Sausalito Pier",
+		"cancellationPolicy": "NO REFUNDS",
+		"cutoff": 60,
+		"paymentMethod": "cc",
+		"private": true,
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/57053f8fc683b102138b4568\/57a10a35c683b1be5d8b456a.png",
+			"type": "photo",
+			"id": "57a10a35c683b1be5d8b456a"
+		},
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/57053f8fc683b102138b4568\/medias\/57053f96c683b1c2118b4567?size=medium",
+			"type": "photo",
+			"seq": 2,
+			"id": "57053f96c683b1c2118b4567"
+		}, {
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/57053f8fc683b102138b4568\/medias\/57a10a29c683b1f35d8b456d?size=medium",
+			"type": "photo",
+			"seq": 1,
+			"id": "57a10a29c683b1f35d8b456d"
+		}, {
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/57053f8fc683b102138b4568\/medias\/57a10a35c683b1be5d8b456a?size=medium",
+			"type": "photo",
+			"seq": 0,
+			"id": "57a10a35c683b1be5d8b456a"
+		}],
+		"resources": [{
+			"resource": {
+				"id": "57053e44c683b12e268b4568"
+			},
+			"id": "57053e44c683b12e268b4568"
+		}],
+		"schedules": [{
+			"repeat": "custom",
+			"dates": ["2016-08-13"],
+			"type": "available",
+			"departure": "fixed",
+			"times": [1000],
+			"priceDelta": 0,
+			"id": "578e6fa4c683b1ae1d8b4568"
+		}, {
+			"repeat": "weekly",
+			"days": [6],
+			"start": "2016-08-14",
+			"type": "available",
+			"departure": "fixed",
+			"times": [1000],
+			"priceDelta": 5,
+			"id": "578e6f7cc683b1931d8b4567"
+		}, {
+			"repeat": "weekly",
+			"days": [6],
+			"end": "2016-08-12",
+			"type": "available",
+			"departure": "fixed",
+			"times": [1000],
+			"priceDelta": 5,
+			"id": "578e6fddc683b1bb1d8b4568"
+		}, {
+			"name": "",
+			"repeat": "custom",
+			"dates": ["2016-05-10"],
+			"type": "available",
+			"departure": "fixed",
+			"times": [700],
+			"priceDelta": 0,
+			"id": "57311995c683b1c5668b4567"
+		}],
+		"addOns": [{
+			"name": "afdgsdfgsdfg",
+			"price": 123,
+			"visibility": "public",
+			"id": "5751c95cc683b158608b4567"
+		}],
+		"id": "57053f8fc683b102138b4568"
+	}, {
+		"category": "Photography",
+		"name": "Cat in the Hat Photo Tours of San Francisco",
+		"excerpt": "You will get a full photo tour of San Francisco from the one and only Cat in the Hat!",
+		"desc": "xyz",
+		"duration": 60,
+		"seller": {
+			"id": "562f9be9c683b1eb7b8b4567"
+		},
+		"price": 50,
+		"currency": "USD",
+		"included": ["Lunch"],
+		"notIncluded": ["Your Own Camera"],
+		"geo": {
+			"lng": -122.4092076032,
+			"lat": 37.777048470458
+		},
+		"updated": "2016-08-25T23:03:27+00:00",
+		"other": "Please note that prices do not include gratuity.  Please plan on tipping your guide 20%.",
+		"complete": true,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"max": 10,
+			"outingMin": 5,
+			"outingMinCutoff": 3600
+		},
+		"visible": true,
+		"requireAdult": false,
+		"pickupAddress": "840 Battery Street, San Francisco, CA",
+		"cancellationPolicy": "Full refunds up to one week before the tour, after that time -you will not receive a refund.",
+		"cutoff": 45,
+		"futureCutoff": {
+			"value": 129600
+		},
+		"paymentMethod": "cc",
+		"private": false,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"description": "",
+			"id": "567053a5c683b1307f8b456c"
+		}],
+		"schedules": [{
+			"repeat": "weekly",
+			"days": [0, 6],
+			"type": "available",
+			"departure": "fixed",
+			"times": [1300],
+			"priceDelta": 0,
+			"id": "56709c01c683b1b4728b4577"
+		}],
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/567053a5c683b1307f8b456d\/56709e14c683b1f0118b4573.jpg",
+			"type": "photo",
+			"id": "56709e14c683b1f0118b4573"
+		},
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/567053a5c683b1307f8b456d\/medias\/56709dd7c683b1342b8b4575?size=medium",
+			"type": "photo",
+			"seq": 1,
+			"id": "56709dd7c683b1342b8b4575"
+		}, {
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/567053a5c683b1307f8b456d\/medias\/56709e14c683b1f0118b4573?size=medium",
+			"type": "photo",
+			"seq": 0,
+			"id": "56709e14c683b1f0118b4573"
+		}],
+		"groupDiscount": {
+			"discountType": "percent",
+			"quantityStart": 10,
+			"discountStart": 15,
+			"quantityIncrement": 3,
+			"discountIncrement": 20,
+			"discountMax": 50,
+			"enabled": true
+		},
+		"terms": {
+			"forceAgree": true,
+			"termsHuman": "",
+			"termsLegal": "sett",
+			"id": "56857266c683b1022b8b4567"
+		},
+		"addOns": [{
+			"name": "Hat",
+			"price": 20,
+			"visibility": "public",
+			"id": "56f4276bc683b104028b4568"
+		}, {
+			"name": "Go Pro Rental",
+			"price": 50,
+			"visibility": "public",
+			"id": "56f42774c683b17b7b8b4577"
+		}, {
+			"name": "Tip",
+			"price": 20,
+			"visibility": "public",
+			"id": "57052d86c683b1fd0d8b4568"
+		}],
+		"travelerPreference": {
+			"changeArrivalCutoff": {
+				"length": 60
+			},
+			"cancellation": {
+				"refundPercentage": 100,
+				"cutoff": {
+					"length": 60
+				}
+			},
+			"questionnaire": {
+				"value": true
+			}
+		},
+		"resources": [],
+		"downDeposit": {
+			"amount": 50,
+			"amountType": "percent",
+			"scope": "outing",
+			"days": 20,
+			"id": "57bf793ec683b1e5378b456c"
+		},
+		"id": "567053a5c683b1307f8b456d"
+	}, {
+		"name": "per outing minimum auto-accept test",
+		"excerpt": "adsf",
+		"desc": "asdf",
+		"duration": 5,
+		"seller": {
+			"id": "5703e383c683b1db368b4567"
+		},
+		"price": 5,
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.40887403488,
+			"lat": 37.777058107413
+		},
+		"updated": "2016-07-15T18:53:39+00:00",
+		"complete": false,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"max": 20,
+			"outingMin": 2,
+			"outingMinCutoff": 3600
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "5789311ac683b1b0418b4584"
+		}],
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.43301391602,
+			"lat": 37.752258207323
+		},
+		"paymentMethod": "cc",
+		"private": false,
+		"category": "Aerial Tours",
+		"pickupAddress": "67 langton",
+		"schedules": [{
+			"repeat": "weekly",
+			"days": [0, 1, 2, 3, 4, 5, 6],
+			"type": "available",
+			"departure": "fixed",
+			"times": [900],
+			"priceDelta": 0,
+			"id": "57893133c683b1784a8b4567"
+		}],
+		"id": "5789311ac683b1b0418b4585"
+	}, {
+		"category": "Aerial Tours",
+		"name": "2-Hour Private Tasting",
+		"excerpt": "rent the whole room",
+		"desc": "rent it",
+		"duration": 120,
+		"seller": {
+			"id": "570ee440c683b1bc2f8b4568"
+		},
+		"price": 200,
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.4055480957,
+			"lat": 37.768543620921
+		},
+		"updated": "2016-08-31T18:26:36+00:00",
+		"complete": true,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 1,
+			"max": 20,
+			"outingMin": 1,
+			"outingMinCutoff": 0
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "570f067bc683b11a368b456e"
+		}],
+		"requireAdult": false,
+		"pickupGeo": {
+			"lng": -122.45223999023,
+			"lat": 37.772885792324
+		},
+		"pickupAddress": "place",
+		"paymentMethod": "cc",
+		"private": false,
+		"schedules": [{
+			"repeat": "weekly",
+			"days": [0, 1, 2, 3, 4, 5, 6],
+			"type": "available",
+			"departure": "fixed",
+			"times": [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900],
+			"priceDelta": 0,
+			"id": "570f067bc683b101318b4574"
+		}],
+		"resources": [{
+			"resource": {
+				"id": "570efd62c683b11a368b456a"
+			},
+			"id": "570efd62c683b11a368b456a"
+		}],
+		"photo": {
+			"src": "\/uploads\/images\/experiences\/570f067bc683b11a368b456f\/570fc903c683b1423f8b4567.jpg",
+			"type": "photo",
+			"id": "570fc903c683b1423f8b4567"
+		},
+		"medias": [{
+			"src": "http:\/\/dev.xola.com\/api\/experiences\/570f067bc683b11a368b456f\/medias\/570fc903c683b1423f8b4567?size=medium",
+			"type": "photo",
+			"seq": 0,
+			"id": "570fc903c683b1423f8b4567"
+		}],
+		"id": "570f067bc683b11a368b456f"
+	}, {
+		"category": "Tour",
+		"name": "Brewly Noted Beer Shuttle",
+		"excerpt": "The Brewly Noted Beer Trail is uniquely positioned in both Tennessee and Virginia, giving craft beer lovers a trail that is both rich and delicious in both states.",
+		"desc": "none",
+		"duration": 1440,
+		"seller": {
+			"id": "57b5df95c683b1443e8b456e"
+		},
+		"price": 25,
+		"currency": "USD",
+		"included": [],
+		"notIncluded": [],
+		"geo": {
+			"lng": -122.40403750911,
+			"lat": 37.769281816663
+		},
+		"updated": "2016-08-19T16:50:43+00:00",
+		"other": "1",
+		"complete": false,
+		"priceType": "person",
+		"guestType": "normal",
+		"group": {
+			"min": 4,
+			"outingMin": 1,
+			"outingMinCutoff": 3600
+		},
+		"visible": true,
+		"demographics": [{
+			"name": "Guests",
+			"code": "guests",
+			"id": "57b70d12c683b1fc578b4580"
+		}],
+		"requireAdult": false,
+		"pickupAddress": "1",
+		"paymentMethod": "cc",
+		"private": false,
+		"id": "57b70d12c683b1fc578b4581"
+	}],
+	"paging": {
+		"next": "\/api\/experiences?search=surfing&price%3C=75&geo=37.7756%2C-122.4193&sort=geo&limit=20&skip=20"
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
